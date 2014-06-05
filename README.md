@@ -30,13 +30,6 @@ La machine installée est une *Debian GNU/Linux* exploitant
 Il est bien-sûr possible d'utiliser d'autres environnements comme par
 exemple Apache sur Windows.
 
-Après avoir cloné localement ce dépôt Git, il faut récupérer l'archive :
-http://esipe.geonef.fr/zelda/extra-data.tar.bz2
-et la désarchiver dans le même dossier, en faisant :
-```
-curl http://esipe.geonef.fr/zelda/extra-data.tar.bz2 | tar xjv
-```
-
 
 Auteur
 ------
