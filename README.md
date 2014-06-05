@@ -38,8 +38,8 @@ curl http://esipe.geonef.fr/zelda/extra-data.tar.bz2 | tar xjv
 ```
 
 
-Auteurs
--------
+Auteur
+------
 
 Projet réalisé par Cécile Ferrier <cferri01@etudiant.univ-mlv.fr>,
 étudiante IG2 de
