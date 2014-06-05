@@ -1,0 +1,406 @@
+MAP
+    IMAGETYPE    PNG
+    EXTENT       -0.0176000000000000 -79.8512000000000057 69.0799999999999983 0.0176000000000000
+    SIZE         800 800
+    SHAPEPATH    "/map/worldofzelda/data"
+    IMAGECOLOR   255 255 255
+    FONTSET     /usr/share/fonts/truetype/ttf-dejavu/fonts.list
+
+    PROJECTION   
+        "init=epsg:4326"
+    END
+
+	WEB
+	    METADATA
+	        "wms_enable_request"    "*"
+			"wms_srs"		"EPSG:4326"
+			"wms_title"		"mymap"
+			"wms_online_resource"	"http://ferrier-mapserver/?map=/map/worldofzelda/map.map&"
+	    END
+	END
+
+	LAYER
+	    NAME             iles
+	    CONNECTIONTYPE   OGR
+	    METADATA
+          "wms_title"               "iles"
+        END
+	    CONNECTION       "/map/worldofzelda/data/iles.shp"
+	    STATUS	     ON
+	    TYPE	     POLYGON
+
+		CLASS
+			NAME    "ILES" 
+			STYLE
+				COLOR           255 204 153
+				OUTLINECOLOR    255 255 255
+				WIDTH           1
+			END
+		END
+	END
+
+	LAYER
+	    NAME	      equipement
+	    CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "equipement"
+        END
+	    CONNECTION    "/map/worldofzelda/data/equipements.shp"
+	    STATUS		ON
+	    TYPE		POINT
+		LABELITEM   'Nom'
+		LABELMAXSCALE 50000000
+	    TEMPLATE    'website/equipementTemplate.html'
+
+		CLASS
+			EXPRESSION ('[type]'="tenue")
+			SYMBOL      '/map/worldofzelda/data/iconearmure.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END    
+        
+        CLASS
+            EXPRESSION ('[type]'="accessoire")
+            SYMBOL      '/map/worldofzelda/data/accessory.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+        END
+        
+        CLASS
+            EXPRESSION ('[type]'="arme")
+            SYMBOL      '/map/worldofzelda/data/iconeequipement.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+        END
+        
+	END
+
+    
+    LAYER
+		NAME	temples
+		CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "temples"
+        END
+		CONNECTION	"/map/worldofzelda/data/temple.shp"
+		STATUS		ON
+		TYPE		POINT
+		LABELITEM   'Nom'
+		LABELMAXSCALE 60000000
+	
+		CLASS
+			NAME	"TEMPLES"
+			SYMBOL  '/map/worldofzelda/data/iconetemple.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+	END	
+	
+	LAYER
+		NAME	fragmentscoeur
+		CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "fragmentscoeur"
+        END
+		CONNECTION	"/map/worldofzelda/data/fragmentscoeur.shp"
+		STATUS		ON
+		TYPE		POINT
+		
+		CLUSTER
+            MAXDISTANCE 20  # in pixels
+            REGION "ellipse"  # can be rectangle or ellipse
+        END
+	
+		CLASS
+			NAME	"FRAGMENTSCOEUR"
+			SYMBOL  '/map/worldofzelda/data/fragmentcoeur.png'
+		END
+	END
+	
+	LAYER
+		NAME	flacons
+		CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "flacons"
+        END
+		CONNECTION	"/map/worldofzelda/data/flacons.shp"
+		STATUS		ON
+		TYPE		POINT
+	
+		CLASS
+			NAME	"FRAGMENTSCOEUR"
+			SYMBOL  '/map/worldofzelda/data/flacon.png'
+		END
+	END
+	
+	LAYER
+		NAME	spectres
+		CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "spectres"
+        END
+		CONNECTION	"/map/worldofzelda/data/amespectres.shp"
+		STATUS		ON
+		TYPE		POINT
+		
+		CLUSTER
+            MAXDISTANCE 30  # in pixels
+            REGION "ellipse"  # can be rectangle or ellipse
+        END
+	
+		CLASS
+			NAME	"AMESPECTRES"
+			SYMBOL  '/map/worldofzelda/data/flammeviolette.png'
+		END
+	END
+	
+	LAYER
+		NAME	places
+		CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "places"
+        END
+		CONNECTION	"/map/worldofzelda/data/places.shp"
+		STATUS		ON
+		TYPE		POINT
+		LABELITEM   'Nom'
+		LABELMAXSCALE 60000000
+		
+		CLUSTER
+            MAXDISTANCE 20  # in pixels
+            REGION "ellipse"  # can be rectangle or ellipse
+            GROUP  ('[Type]'="grotte")
+        END
+	
+		CLASS
+			EXPRESSION ('[Type]'="clé")
+			SYMBOL      '/map/worldofzelda/data/exclamation.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="maison")
+			SYMBOL      '/map/worldofzelda/data/maison.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="village")
+			SYMBOL      '/map/worldofzelda/data/village.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="foret")
+			SYMBOL      '/map/worldofzelda/data/forest.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="source")
+			SYMBOL      '/map/worldofzelda/data/fountain.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="shop")
+			SYMBOL      '/map/worldofzelda/data/shop.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="grotte")
+			SYMBOL      '/map/worldofzelda/data/grotte.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="chateau")
+			SYMBOL      '/map/worldofzelda/data/castle.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+	END
+	
+	LAYER
+		NAME	rivers
+	    METADATA
+          "wms_title"               "rivers"
+        END
+		DATA	"/map/worldofzelda/data/eaux.shp"
+		STATUS		ON
+		TYPE		POLYGON
+		LABELITEM   'Nom'
+		LABELMAXSCALE 50000000
+	
+		CLASS
+			STYLE
+			    COLOR   31 143 255
+			    OUTLINECOLOR    0 0 0
+			    WIDTH 1
+			END
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+	END
+	
+	LAYER
+	    NAME    snowpeak
+	    METADATA
+	        "wms_title"     "snowpeak"
+	    END
+	    DATA    "/map/worldofzelda/data/snowPeak_georef.tif"
+	    STATUS  ON
+	    TYPE    RASTER
+		PROCESSING    "RESAMPLE=NEAREST"
+		OPACITY     50
+	END
+	
+	LAYER
+	    NAME    lanayru
+	    METADATA
+	        "wms_title"     "lanayru"
+	    END
+	    DATA    "/map/worldofzelda/data/Lanayru_Province_georef.tif"
+	    STATUS  ON
+	    TYPE    RASTER
+		PROCESSING    "RESAMPLE=NEAREST"
+		OPACITY     50
+	END
+	
+	LAYER
+	    NAME    firone
+	    METADATA
+	        "wms_title"     "firone"
+	    END
+	    DATA    "/map/worldofzelda/data/Province de Firone_georef.tif"
+	    STATUS  ON
+	    TYPE    RASTER
+		PROCESSING    "RESAMPLE=NEAREST"
+		OPACITY     50
+	END
+
+	LAYER
+		NAME          background
+		DATA          "fonddecarte.png"
+	    METADATA
+          "wms_title"               "background"
+        END
+		STATUS        ON
+		TYPE          RASTER
+		PROCESSING    "RESAMPLE=NEAREST"
+	END
+		   
+END
+	

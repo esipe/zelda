@@ -1,0 +1,409 @@
+MAP
+    IMAGETYPE    PNG
+    EXTENT       -0.0176000000000000 -79.8512000000000057 69.0799999999999983 0.0176000000000000
+    SIZE         800 800
+    SHAPEPATH    "/project/zelda/map/data"
+    IMAGECOLOR   255 255 255
+    FONTSET     "/project/zelda/map/data/fonts.list"
+
+    PROJECTION   
+        "init=epsg:4326"
+    END
+
+	WEB
+	    METADATA
+	        "wms_enable_request"    "*"
+			"wms_srs"		"EPSG:4326"
+			"wms_title"		"mymap"
+			"wms_online_resource"	"http://mapserver.esipe.geonef.fr/?map=/project/zelda/map/map.map&"
+	    END
+	END
+
+	LAYER
+	    NAME             iles
+	    CONNECTIONTYPE   OGR
+	    METADATA
+          "wms_title"               "iles"
+        END
+	    CONNECTION       "iles.shp"
+	    STATUS	     ON
+	    TYPE	     POLYGON
+
+		CLASS
+			NAME    "ILES" 
+			STYLE
+				COLOR           255 204 153
+				OUTLINECOLOR    255 255 255
+				WIDTH           1
+			END
+		END
+	END
+
+	LAYER
+	    NAME	      equipement
+	    CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "equipement"
+        END
+	    CONNECTION    "equipements.shp"
+	    STATUS		ON
+	    TYPE		POINT
+		LABELITEM   'Nom'
+		LABELMAXSCALE 50000000
+	    TEMPLATE    'website/equipementTemplate.html'
+
+		CLASS
+			EXPRESSION ('[type]'="tenue")
+			SYMBOL      'data/iconearmure.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END    
+        
+        CLASS
+            EXPRESSION ('[type]'="accessoire")
+            SYMBOL      'data/accessory.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+        END
+        
+        CLASS
+            EXPRESSION ('[type]'="arme")
+            SYMBOL      'data/iconeequipement.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+        END
+        
+	END
+
+    
+    LAYER
+		NAME	temples
+		CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "temples"
+        END
+		CONNECTION	"temple.shp"
+		STATUS		ON
+		TYPE		POINT
+		LABELITEM   'Nom'
+		LABELMAXSCALE 60000000
+	
+		CLASS
+			NAME	"TEMPLES"
+			SYMBOL  'data/iconetemple.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+	END	
+	
+	LAYER
+		NAME	fragmentscoeur
+		CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "fragmentscoeur"
+        END
+		CONNECTION	"fragmentscoeur.shp"
+		STATUS		ON
+		TYPE		POINT
+		
+		CLUSTER
+            MAXDISTANCE 20
+            REGION "ellipse"
+        END
+	
+		CLASS
+			NAME	"FRAGMENTSCOEUR"
+			SYMBOL  'data/fragmentcoeur.png'
+		END
+	END
+	
+	LAYER
+		NAME	flacons
+		CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "flacons"
+        END
+		CONNECTION	"data/flacons.shp"
+		STATUS		ON
+		TYPE		POINT
+	
+		CLASS
+			NAME	"FLACONS"
+			SYMBOL  'data/flacon.png'
+		END
+	END
+	
+	LAYER
+		NAME	spectres
+		CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "spectres"
+        END
+		CONNECTION	"data/amespectres.shp"
+		STATUS		ON
+		TYPE		POINT
+		
+		CLUSTER
+            MAXDISTANCE 30  # in pixels
+            REGION "ellipse"  # can be rectangle or ellipse
+        END
+	
+		CLASS
+			NAME	"AMESPECTRES"
+			SYMBOL  'data/flammeviolette.png'
+		END
+	END
+	
+	LAYER
+		NAME	places
+		CONNECTIONTYPE	OGR
+	    METADATA
+          "wms_title"               "places"
+        END
+		CONNECTION	"data/places.shp"
+		STATUS		ON
+		TYPE		POINT
+		LABELITEM   'Nom'
+		LABELMAXSCALE 50000000
+		
+		
+	
+	CLUSTER
+            MAXDISTANCE 20  # in pixels
+            REGION "ellipse"  # can be rectangle or ellipse
+            GROUP  ('[Type]'="grotte")
+        END
+
+	
+		CLASS
+			EXPRESSION ('[Type]'="clé")
+			SYMBOL      'data/exclamation.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="maison")
+			SYMBOL      'data/maison.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="village")
+			SYMBOL      'data/village.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="foret")
+			SYMBOL      'data/forest.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="source")
+			SYMBOL      'data/fountain.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="shop")
+			SYMBOL      'data/shop.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="grotte")
+			SYMBOL      'data/grotte.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+		
+		CLASS
+			EXPRESSION ('[Type]'="chateau")
+			SYMBOL      'data/castle.png'
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+	END
+	
+	LAYER
+		NAME	rivers
+	    METADATA
+          "wms_title"               "rivers"
+        END
+		DATA	"eaux.shp"
+		STATUS		ON
+		TYPE		POLYGON
+		LABELITEM   'Nom'
+		LABELMAXSCALE 50000000
+	
+		CLASS
+			STYLE
+			    COLOR   31 143 255
+			    OUTLINECOLOR    0 0 0
+			    WIDTH 1
+			END
+			
+			LABEL
+			    COLOR   0 0 0
+			    OUTLINECOLOR 255 255 255
+			    FONT    'gras'
+			    TYPE    truetype
+			    SIZE    10
+			    POSITION auto
+			    PARTIALS false
+			 END
+		END
+	END
+	
+	LAYER
+	    NAME    snowpeak
+	    METADATA
+	        "wms_title"     "snowpeak"
+	    END
+	    DATA    "/project/zelda/map/data/snowPeak_georef.tif"
+	    STATUS  ON
+	    TYPE    RASTER
+		PROCESSING    "RESAMPLE=NEAREST"
+		OPACITY     50
+	END
+	
+	LAYER
+	    NAME    lanayru
+	    METADATA
+	        "wms_title"     "lanayru"
+	    END
+	    DATA    "/project/zelda/map/data/Lanayru_Province_georef.tif"
+	    STATUS  ON
+	    TYPE    RASTER
+		PROCESSING    "RESAMPLE=NEAREST"
+		OPACITY     50
+	END
+	
+	LAYER
+	    NAME    firone
+	    METADATA
+	        "wms_title"     "firone"
+	    END
+	    DATA    "/project/zelda/map/data/Province de Firone_georef.tif"
+	    STATUS  ON
+	    TYPE    RASTER
+		PROCESSING    "RESAMPLE=NEAREST"
+		OPACITY     50
+	END
+
+	LAYER
+		NAME          background
+		DATA          "/project/zelda/map/data/fonddecarte.png"
+	    METADATA
+          "wms_title"               "background"
+        END
+		STATUS        ON
+		TYPE          RASTER
+		PROCESSING    "RESAMPLE=NEAREST"
+	END
+		   
+END
+	

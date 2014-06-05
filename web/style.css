@@ -1,0 +1,102 @@
+@font-face{
+    
+    font-family: 'zelda-font';
+    src: url('./font/AcadianRunes-Regular_PERSONAL_USE.ttf') format('ttf');
+}
+
+body { 
+    margin:0px;
+	font-family:'zelda-font',verdana; 
+    font-size: 20px; 
+    background-image:url('image/fondmap.jpg');
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-attachment:fixed;
+}
+
+.div-cadre
+{
+	margin-top:20px;
+	margin-left:90px;
+	margin-bottom:40px;
+	width:80%;
+}
+
+.div-header
+{
+	border-radius:10px;
+	height:35%;
+	width:100%
+	min-height:80px;
+	border-bottom:solid 3px black;
+	border-left:solid 3px black;
+	border-right:solid 3px black;
+	border-top:solid 3px black;
+}
+
+.div-navigate
+{
+	border-radius:10px;
+	width:65%;
+	height:65%;
+	float:left;
+	border-left:solid 3px black;
+	border-right:solid 3px black;
+	border-top:solid 3px black;
+	border-bottom:solid 3px black;
+}
+
+#div-main
+{
+	border-radius:10px;
+	position:relative;
+	margin-left:40px;
+	font-size:20px;
+	font-weight:bold;
+	font-family:'zelda-font';
+	text-shadow:0px 0px 4px #ffffff;
+	width:25%;
+	height:55%;
+	float:left;
+	border-left:solid 3px black;
+	border-right:solid 3px black;
+	border-top:solid 3px black;
+	border-bottom:solid 3px black;
+	padding-top:50px;
+	padding-left:50px;	
+}
+
+#run{
+
+    position:absolute;
+    left:800px;
+    top:800px;
+}
+
+#map{
+
+    position:relative;
+    left:78px;
+}
+
+#imgzelda{
+
+    position:absolute;
+    left:45px;
+    top:700px;
+}
+
+#imglink{
+
+    position:absolute;
+    left:220px;
+    top:130px;
+}
+
+#esipe{
+
+    position:absolute;
+    top:30px;
+    left:100px;
+}
+

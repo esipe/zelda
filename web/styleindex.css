@@ -1,0 +1,53 @@
+body { 
+    margin:0px;
+	font-family:'zelda-font',verdana; 
+    font-size: 20px; 
+    background-image:url('image/fondaccueil.jpg');
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-attachment:fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#triforceimg{
+
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main{
+
+    border-radius:10px;
+	border-left:solid 3px black;
+	border-right:solid 3px black;
+	border-top:solid 3px black;
+	border-bottom:solid 3px black;
+	background-color:#ffffff;
+	opacity:0.7;
+	width:75%;
+	height:75%;
+  margin-left: auto;
+  margin-right: auto;
+    text-shadow: #ffffff 1px 1px, #ffffff -1px 1px, #ffffff -1px -1px, #ffffff 1px -1px;
+    text-align:center;
+}
+
+#midona{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#esipe{
+
+    position:absolute;
+    right:20px;
+    bottom:15px;
+}
+
